@@ -7,13 +7,6 @@ from selenium.common.exceptions import WebDriverException
 MAX_WAIT = 10
 
 
-# TODO: Adjust model so that items are associated with different lists
-# TODO: Add unique URLs for each list
-# TODO: Add URLs for adding a new item to an existing list via POST
-
-
-
-
 class NewVisitorTest(LiveServerTestCase):
 
     def setUp(self):
