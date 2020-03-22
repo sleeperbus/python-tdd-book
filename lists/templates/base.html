@@ -1,14 +1,41 @@
 <html>
     <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/static/base.css">
         <title>To-Do lists</title>
     </head>
     <body>
-        <h1>{% block header_text %}{% endblock %}</h1>
-        <form method="POST" action="{% block form_action %}{% endblock %}">
-            <input name="item_text" id="id_new_item" placeholder="Ent er a to-do item"/>
-            {% csrf_token %}
-        </form>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 offset-md-3 jumbotron">
+                    <div class="text-center">
+                        <h1>{% block header_text %}{% endblock %}</h1>
+                        <form method="POST" action="{% block form_action %}{% endblock %}">
+                            <input name="item_text" id="id_new_item" class="form-control form-control-lg" placeholder="Enter a to-do item"/>
+                            {% csrf_token %}
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                {% block table %}
+                {% endblock %}
+            </div>
+        </div>
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="/static/bootstrap/js/bootstrap.min.js"></script>
     </body>
-    {% block table %}
-    {% endblock %}
 </html>
