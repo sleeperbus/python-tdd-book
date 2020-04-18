@@ -77,4 +77,3 @@ class ItemValidationTest(FunctionalTest):
             self.get_error_element().is_displayed()
         ))
 
-
