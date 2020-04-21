@@ -5,3 +5,5 @@
 /.idea/
 /static/
 .env
+*__pycache__*
+.gitignore
