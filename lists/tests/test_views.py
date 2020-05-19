@@ -184,8 +184,6 @@ class NewListViewUnitTest(unittest.TestCase):
         self.assertFalse(mock_form.save.called)
 
 
-
-
 class MyListsTest(TestCase):
     def test_my_lists_url_renders_my_lists_template(self):
         User.objects.create(email='a@b.com')
@@ -199,6 +197,17 @@ class MyListsTest(TestCase):
         self.assertEqual(response.context['owner'], correct_user)
 
 
+class ShareListTest(TestCase):
+    def test_post_redirects_to_lists_page(self):
+        list_ = List.objects.create()
+        response = self.client.post(f'/lists/{list_.id}/share', data={'sharee': 'a@b.com'})
+        self.assertRedirects(response, f'/lists/{list_.id}/')
+
+    def test_sharing_a_list_via_post(self):
+        user_ = User.objects.create(email='share@example.com')
+        list_ = List.objects.create()
+        response = self.client.post(f'/lists/{list_.id}/share', data={'sharee': 'share@example.com'})
+        self.assertIn(user_, list_.shared_with.all())
 
 
 
